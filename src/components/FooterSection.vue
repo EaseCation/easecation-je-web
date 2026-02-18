@@ -27,6 +27,7 @@ const repos = [
   { name: 'ViaBedrock', url: 'https://github.com/EaseCation/ViaBedrock' },
   { name: 'ViaBedrockUtility', url: 'https://github.com/EaseCation/ViaBedrockUtility' },
   { name: 'ViaProxyVBUCheck', url: 'https://github.com/EaseCation/ViaProxyVBUCheck' },
+  { name: 'FabricRock', url: 'https://github.com/EaseCation/FabricRock' },
 ]
 </script>
 
