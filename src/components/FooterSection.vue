@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p class="copyright">&copy;2025 宁波易什网络科技有限公司 版权所有</p>
+    <p class="copyright">&copy;2026 宁波易什网络科技有限公司 版权所有</p>
     <p class="icp">
       ICP备案/许可证号:
       <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">浙ICP备2022033471号-1</a>

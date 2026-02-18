@@ -22,7 +22,7 @@
 
 <style scoped>
 .download-section {
-  padding: 8px 20px 48px;
+  padding: 8px 48px 56px;
   text-align: center;
 }
 
@@ -36,23 +36,31 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
+  gap: 10px;
+  padding: 12px 32px;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s, transform 0.1s;
   cursor: pointer;
+  border: none;
+  position: relative;
+  /* 凸起厚度：底部深色边模拟立体感 */
+  border-bottom: 4px solid;
+  border-top: 2px solid;
+  transition: border-bottom-width 0.05s, border-top-width 0.05s, padding 0.05s, filter 0.1s;
 }
 
 .btn:hover {
   text-decoration: none;
-  transform: translateY(-1px);
+  filter: brightness(1.08);
 }
 
+/* 按下：厚度消失，按钮下沉 */
 .btn:active {
-  transform: translateY(0);
+  border-bottom-width: 2px;
+  border-top-width: 3px;
+  filter: brightness(0.92);
 }
 
 .btn-icon {
@@ -61,34 +69,51 @@
   flex-shrink: 0;
 }
 
+/* 主按钮：绿色 */
 .btn-primary {
-  background: var(--accent-green);
+  background: #3e8a2e;
   color: #fff;
+  border-bottom-color: #2a5f1e;
+  border-top-color: #5eb34c;
+  border-left: 2px solid #4a9e38;
+  border-right: 2px solid #4a9e38;
 }
 
-.btn-primary:hover {
-  background: var(--accent-green-hover);
+.btn-primary:active {
+  background: #367a27;
+  border-top-color: #2a5f1e;
+  border-bottom-color: #5eb34c;
 }
 
+/* 次按钮：浅灰 */
 .btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  background: #c8c8c8;
+  color: #313233;
+  border-bottom-color: #8e8e8e;
+  border-top-color: #e8e8e8;
+  border-left: 2px solid #b0b0b0;
+  border-right: 2px solid #b0b0b0;
 }
 
-.btn-secondary:hover {
-  background: var(--bg-card);
+.btn-secondary:active {
+  background: #b8b8b8;
+  border-top-color: #8e8e8e;
+  border-bottom-color: #e8e8e8;
 }
 
 @media (max-width: 640px) {
+  .download-section {
+    padding: 8px 20px 40px;
+  }
+
   .buttons {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .btn {
-    width: 80%;
     justify-content: center;
+    padding: 12px 24px;
   }
 }
 </style>
