@@ -89,20 +89,13 @@ function copyAddress() {
     padding: 32px 20px;
   }
 
-  .address-box {
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-  }
-
   .address-text {
     font-size: 1rem;
     padding: 12px 16px;
   }
 
   .copy-btn {
-    width: 100%;
-    padding: 12px 16px;
+    display: none;
   }
 }
 </style>

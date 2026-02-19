@@ -5,7 +5,7 @@
       <div class="hero-content" :style="{ opacity: contentOpacity, transform: `scale(${contentScale})` }">
         <img :src="logoUrl" alt="EaseCation" class="hero-logo" />
         <p class="hero-subtitle">Java Edition · 技术预览测试</p>
-        <p class="hero-tag">基于 ViaProxy · Tech Preview · 仅少量玩法可用</p>
+        <p class="hero-tag">基于 ViaProxy · Tech Preview · 部分玩法未适配</p>
       </div>
       <div class="hero-screenshot" :style="{ transform: `scale(${imageScale})`, transformOrigin: 'center center' }">
         <img ref="imgRef" :src="heroUrl" alt="EaseCation 游戏截图" class="screenshot-img" />
@@ -45,10 +45,17 @@ function measure() {
   const imgTop = 40 + contentTop
   // 让图片中心对齐视口中心: translateY = -(imgTop - (vh - imgHeight) / 2)
   panDistance = Math.max(imgTop - (vh - imgHeight) / 2, 0)
-  // 阶段2 滚动距离：半个视口高度（正文更早出现）
-  const zoomDistance = vh * 0.15
-  // spacer 总高度 = 视口 + 平移距离 + 缩放距离
-  spacerHeight.value = vh + panDistance + zoomDistance
+  // 阶段2 滚动距离
+  const isMobile = window.innerWidth <= 640
+  const zoomDistance = vh * (isMobile ? 0.05 : 0.15)
+
+  if (isMobile) {
+    // 移动端：spacer 只占视口 55%，让正文在首屏底部 1/3 可见
+    spacerHeight.value = vh * 0.55
+  } else {
+    // 桌面端：完整视差体验
+    spacerHeight.value = vh + panDistance + zoomDistance
+  }
 }
 
 function onScroll() {

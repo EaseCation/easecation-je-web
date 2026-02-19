@@ -5,6 +5,7 @@
       <div class="gradient-bg"></div>
       <ServerAddress />
       <DownloadButtons />
+      <HighlightsSection />
       <TutorialSection />
       <FooterSection />
     </div>
@@ -15,6 +16,7 @@
 import HeroSection from './components/HeroSection.vue'
 import ServerAddress from './components/ServerAddress.vue'
 import DownloadButtons from './components/DownloadButtons.vue'
+import HighlightsSection from './components/HighlightsSection.vue'
 import TutorialSection from './components/TutorialSection.vue'
 import FooterSection from './components/FooterSection.vue'
 </script>
@@ -55,6 +57,34 @@ import FooterSection from './components/FooterSection.vue'
     rgba(0,0,0,0.7) 120px,
     black 240px
   );
+}
+
+@media (max-width: 640px) {
+  .content-overlay {
+    padding-top: 120px;
+    background: linear-gradient(
+      to bottom,
+      rgba(40, 40, 42, 0) 0%,
+      rgba(40, 40, 42, 0.3) 30px,
+      rgba(40, 40, 42, 0.6) 60px,
+      rgba(40, 40, 42, 0.85) 100px,
+      rgba(40, 40, 42, 0.92) 140px
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,0.3) 30px,
+      rgba(0,0,0,0.7) 70px,
+      black 140px
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,0.3) 30px,
+      rgba(0,0,0,0.7) 70px,
+      black 140px
+    );
+  }
 }
 
 /* 巨大模糊渐变色块背景 */

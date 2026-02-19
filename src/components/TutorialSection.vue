@@ -6,6 +6,10 @@ const base = import.meta.env.BASE_URL
   <section id="tutorial" class="tutorial">
     <h2 class="section-title">安装教程</h2>
 
+    <div class="mod-purpose">
+      安装 Mod 是为了正确渲染服务器中的自定义方块、自定义实体、玩家皮肤、ModUI 等内容，并提供额外的性能优化。
+    </div>
+
     <div class="requirements">
       <h3>环境要求</h3>
       <ul>
@@ -88,6 +92,13 @@ const base = import.meta.env.BASE_URL
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 32px;
+}
+
+.mod-purpose {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
 }
 
 .requirements {

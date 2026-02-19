@@ -110,6 +110,13 @@ const base = import.meta.env.BASE_URL
     padding: 8px 20px 40px;
   }
 
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
   .buttons {
     flex-direction: column;
     align-items: stretch;
@@ -117,7 +124,6 @@ const base = import.meta.env.BASE_URL
 
   .btn {
     justify-content: center;
-    padding: 12px 24px;
   }
 }
 </style>
