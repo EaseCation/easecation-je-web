@@ -94,22 +94,6 @@ function createArchive(outputPath) {
 }
 
 /**
- * 构建 Mod 包 zip（mods + config + README）
- */
-async function buildModsZip() {
-  const outputPath = resolve(PUBLIC_DIR, 'easecation-mods.zip');
-  const { archive, done } = createArchive(outputPath);
-
-  archive.directory(resolve(PACKS_DIR, 'mods'), 'mods', skipJunk);
-  archive.directory(resolve(PACKS_DIR, 'config'), 'config', skipJunk);
-  archive.file(resolve(PACKS_DIR, 'README.md'), { name: 'README.md' });
-  await archive.finalize();
-
-  const bytes = await done;
-  console.log(`  easecation-mods.zip (${(bytes / 1024 / 1024).toFixed(1)} MB)`);
-}
-
-/**
  * 构建整合包 zip（CurseForge 格式，兼容 HMCL）
  * 结构：manifest.json + overrides/(mods + config + servers.dat)
  */
@@ -118,6 +102,7 @@ async function buildModpackZip() {
   const { archive, done } = createArchive(outputPath);
 
   archive.file(resolve(PACKS_DIR, 'modpack', 'manifest.json'), { name: 'manifest.json' });
+  archive.file(resolve(PACKS_DIR, 'README.md'), { name: 'README.md' });
   archive.directory(resolve(PACKS_DIR, 'mods'), 'overrides/mods', skipJunk);
   archive.directory(resolve(PACKS_DIR, 'config'), 'overrides/config', skipJunk);
   archive.append(generateServersDat(), { name: 'overrides/servers.dat' });
@@ -134,7 +119,7 @@ async function main() {
     mkdirSync(PUBLIC_DIR, { recursive: true });
   }
 
-  await Promise.all([buildModsZip(), buildModpackZip()]);
+  await buildModpackZip();
 
   console.log('Done!');
 }

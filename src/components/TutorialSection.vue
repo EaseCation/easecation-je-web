@@ -10,7 +10,7 @@ const base = import.meta.env.BASE_URL
       <h3>环境要求</h3>
       <ul>
         <li><strong>Minecraft Java Edition</strong> 1.21.11</li>
-        <li><strong>Fabric Loader</strong> 0.16.x 或更高版本</li>
+        <li><strong>Fabric Loader</strong> 0.18.4 或更高版本</li>
       </ul>
     </div>
 
@@ -18,47 +18,52 @@ const base = import.meta.env.BASE_URL
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h4>安装 Fabric Loader</h4>
+          <h4>下载整合包</h4>
           <p>
-            前往
-            <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Fabric 官网</a>
-            下载安装器，选择 Minecraft <strong>1.21.11</strong> 版本进行安装。
+            点击下方按钮下载整合包文件。
           </p>
+          <a :href="`${base}easecation-modpack.zip`" download class="step-btn">下载整合包</a>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h4>下载 Mod 文件</h4>
-          <p>
-            点击下方按钮下载 Mod 文件，或使用上方「下载整合包」一键获取。
-          </p>
-          <a :href="`${base}easecation-mods.zip`" download class="step-btn">下载 Mod</a>
+          <h4>选择安装方式</h4>
+
+          <div class="install-method">
+            <h5>第三方启动器（HMCL、PCL2、BakaXL 等）</h5>
+            <p>
+              在启动器中选择「导入整合包」，选择下载的 <code>.zip</code> 文件即可自动安装。
+              服务器地址已预置，安装完成后可直接连接。
+            </p>
+          </div>
+
+          <div class="install-method">
+            <h5>官方启动器（手动安装）</h5>
+            <ol>
+              <li>
+                前往
+                <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Fabric 官网</a>
+                下载安装器，选择 Minecraft <strong>1.21.11</strong> 版本安装 Fabric Loader
+              </li>
+              <li>解压整合包，将 <code>overrides/mods</code> 中的文件复制到 <code>.minecraft/mods/</code></li>
+              <li>将 <code>overrides/config</code> 中的文件复制到 <code>.minecraft/config/</code></li>
+            </ol>
+            <div class="tip">
+              <strong>提示：</strong>Windows 用户可通过 <code>%appdata%\.minecraft</code> 快速访问；
+              macOS 用户路径为 <code>~/Library/Application Support/minecraft</code>。
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h4>放入 mods 文件夹</h4>
-          <p>
-            将下载的 Mod 文件放入 Minecraft 的 <code>.minecraft/mods</code> 文件夹中。
-            如果使用整合包，解压后直接使用即可。
-          </p>
-          <div class="tip">
-            <strong>提示：</strong>Windows 用户可通过 <code>%appdata%/.minecraft/mods</code> 快速访问；
-            macOS 用户路径为 <code>~/Library/Application Support/minecraft/mods</code>。
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-number">4</div>
-        <div class="step-content">
           <h4>启动游戏并连接</h4>
           <p>
-            在 Minecraft 启动器中选择 <strong>Fabric 1.21.11</strong> 配置启动游戏。
+            在启动器中选择 <strong>Fabric 1.21.11</strong> 配置启动游戏。
             进入「多人游戏」，添加服务器地址：
           </p>
           <code class="address-highlight">je.easecation.net:25565</code>
@@ -169,10 +174,43 @@ const base = import.meta.env.BASE_URL
   color: var(--accent-green-light);
 }
 
+.step-content ol {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+
+.step-content ol li {
+  padding: 4px 0;
+}
+
+.install-method {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+}
+
+.install-method + .install-method {
+  margin-top: 12px;
+}
+
+.install-method h5 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--accent-green-light);
+}
+
+.install-method p {
+  margin: 0;
+}
+
 .tip {
   margin-top: 12px;
   padding: 12px 16px;
-  background: var(--bg-input);
+  background: var(--bg-secondary);
   border-left: 3px solid var(--accent-green);
   border-radius: var(--radius-sm);
   font-size: 0.85rem;

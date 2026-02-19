@@ -18,7 +18,7 @@ const base = import.meta.env.BASE_URL
           <line x1="16" y1="13" x2="8" y2="13"/>
           <line x1="16" y1="17" x2="8" y2="17"/>
         </svg>
-        下载 Mod + 安装教程
+        安装教程
       </a>
     </div>
   </section>
