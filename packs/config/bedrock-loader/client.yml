@@ -1,0 +1,30 @@
+# Bedrock Loader - Client Remote Sync Configuration
+# This configuration is used for syncing resource packs from server
+
+# Enable remote synchronization
+# true: Check server and download resource packs on startup
+# false: Disable remote sync, use local resource packs (default)
+enabled: true
+
+# Server address (including protocol and port)
+# Example: http://192.168.1.100:8080
+server-url: "http://je-rock.easecation.net"
+
+# HTTP request timeout (seconds)
+# Recommended: 5-30 seconds
+timeout-seconds: 10
+
+# Show UI sync interface
+# true: Show download progress UI (Phase 3)
+# false: Silent background sync
+show-ui: true
+
+# Auto cancel on error
+# true: Cancel sync on any error, use local packs
+# false: Try to continue syncing other files
+auto-cancel-on-error: false
+
+# Auto cleanup removed packs
+# true: Automatically delete packs from remote/ directory that have been removed from server
+# false: Keep all local packs, no auto cleanup
+auto-cleanup-removed-packs: true

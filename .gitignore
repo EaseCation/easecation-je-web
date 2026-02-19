@@ -2,3 +2,7 @@ node_modules
 dist
 .DS_Store
 *.local
+.idea/
+
+# 构建生成的 zip 包
+public/*.zip

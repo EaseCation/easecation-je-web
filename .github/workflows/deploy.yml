@@ -27,7 +27,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build
+      - run: npm run build -- --base=/easecation-je-web/
 
       - uses: actions/upload-pages-artifact@v3
         with:

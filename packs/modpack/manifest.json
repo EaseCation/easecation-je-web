@@ -1,0 +1,19 @@
+{
+  "minecraft": {
+    "version": "1.21.11",
+    "modLoaders": [
+      {
+        "id": "fabric-0.18.4",
+        "primary": true
+      }
+    ]
+  },
+  "manifestType": "minecraftModpack",
+  "manifestVersion": 1,
+  "name": "EaseCation JE Modpack",
+  "version": "1.0.0",
+  "author": "EaseCation",
+  "description": "EaseCation Java Edition 测试服整合包，包含连接服务器所需的全部 Mod。",
+  "files": [],
+  "overrides": "overrides"
+}

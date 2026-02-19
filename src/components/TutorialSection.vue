@@ -1,3 +1,7 @@
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
+
 <template>
   <section id="tutorial" class="tutorial">
     <h2 class="section-title">安装教程</h2>
@@ -30,7 +34,7 @@
           <p>
             点击下方按钮下载 Mod 文件，或使用上方「下载整合包」一键获取。
           </p>
-          <a href="#" class="step-btn">下载 Mod</a>
+          <a :href="`${base}easecation-mods.zip`" download class="step-btn">下载 Mod</a>
         </div>
       </div>
 
