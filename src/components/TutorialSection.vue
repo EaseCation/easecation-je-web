@@ -1,20 +1,22 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const base = import.meta.env.BASE_URL
 </script>
 
 <template>
   <section id="tutorial" class="tutorial">
-    <h2 class="section-title">安装教程</h2>
+    <h2 class="section-title">{{ t('tutorial.title') }}</h2>
 
     <div class="mod-purpose">
-      安装 Mod 是为了正确渲染服务器中的自定义方块、自定义实体、玩家皮肤、ModUI 等内容，并提供额外的性能优化。
+      {{ t('tutorial.modPurpose') }}
     </div>
 
     <div class="requirements">
-      <h3>环境要求</h3>
+      <h3>{{ t('tutorial.requirements.title') }}</h3>
       <ul>
         <li><strong>Minecraft Java Edition</strong> 1.21.11</li>
-        <li><strong>Fabric Loader</strong> 0.18.4 或更高版本</li>
+        <li><strong>Fabric Loader</strong> 0.18.4+</li>
       </ul>
     </div>
 
@@ -22,42 +24,30 @@ const base = import.meta.env.BASE_URL
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h4>下载整合包</h4>
-          <p>
-            点击下方按钮下载整合包文件。
-          </p>
-          <a :href="`${base}easecation-modpack.zip`" download class="step-btn">下载整合包</a>
+          <h4>{{ t('tutorial.step1.title') }}</h4>
+          <p>{{ t('tutorial.step1.desc') }}</p>
+          <a :href="`${base}easecation-modpack.zip`" download class="step-btn">{{ t('tutorial.step1.btn') }}</a>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h4>选择安装方式</h4>
+          <h4>{{ t('tutorial.step2.title') }}</h4>
 
           <div class="install-method">
-            <h5>第三方启动器（HMCL、PCL2、BakaXL 等）</h5>
-            <p>
-              在启动器中选择「导入整合包」，选择下载的 <code>.zip</code> 文件即可自动安装。
-              服务器地址已预置，安装完成后可直接连接。
-            </p>
+            <h5>{{ t('tutorial.step2.thirdParty.title') }}</h5>
+            <p v-html="t('tutorial.step2.thirdParty.desc')"></p>
           </div>
 
           <div class="install-method">
-            <h5>官方启动器（手动安装）</h5>
+            <h5>{{ t('tutorial.step2.official.title') }}</h5>
             <ol>
-              <li>
-                前往
-                <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Fabric 官网</a>
-                下载安装器，选择 Minecraft <strong>1.21.11</strong> 版本安装 Fabric Loader
-              </li>
-              <li>解压整合包，将 <code>overrides/mods</code> 中的文件复制到 <code>.minecraft/mods/</code></li>
-              <li>将 <code>overrides/config</code> 中的文件复制到 <code>.minecraft/config/</code></li>
+              <li v-html="t('tutorial.step2.official.step1')"></li>
+              <li v-html="t('tutorial.step2.official.step2')"></li>
+              <li v-html="t('tutorial.step2.official.step3')"></li>
             </ol>
-            <div class="tip">
-              <strong>提示：</strong>Windows 用户可通过 <code>%appdata%\.minecraft</code> 快速访问；
-              macOS 用户路径为 <code>~/Library/Application Support/minecraft</code>。
-            </div>
+            <div class="tip" v-html="t('tutorial.step2.official.tip')"></div>
           </div>
         </div>
       </div>
@@ -65,18 +55,15 @@ const base = import.meta.env.BASE_URL
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h4>启动游戏并连接</h4>
-          <p>
-            在启动器中选择 <strong>Fabric 1.21.11</strong> 配置启动游戏。
-            进入「多人游戏」，添加服务器地址：
-          </p>
+          <h4>{{ t('tutorial.step3.title') }}</h4>
+          <p v-html="t('tutorial.step3.desc')"></p>
           <code class="address-highlight">je.easecation.net:25565</code>
         </div>
       </div>
     </div>
 
     <div class="notice">
-      游戏数据与中国版正式服数据不互通，仅做技术测试
+      {{ t('tutorial.notice') }}
     </div>
   </section>
 </template>
@@ -177,6 +164,14 @@ const base = import.meta.env.BASE_URL
   line-height: 1.7;
 }
 
+.step-content :deep(code) {
+  background: var(--bg-input);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--accent-green-light);
+}
+
 .step-content code {
   background: var(--bg-input);
   padding: 2px 8px;
@@ -195,6 +190,10 @@ const base = import.meta.env.BASE_URL
 
 .step-content ol li {
   padding: 4px 0;
+}
+
+.step-content :deep(a) {
+  color: var(--accent-green-light);
 }
 
 .install-method {

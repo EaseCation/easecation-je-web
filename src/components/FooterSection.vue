@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="open-source">
-      <p class="os-title">开源项目</p>
+      <p class="os-title">{{ t('footer.openSource') }}</p>
       <div class="os-links">
         <a v-for="repo in repos" :key="repo.name" :href="repo.url" target="_blank" rel="noopener" class="os-link">
           <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor">
@@ -11,10 +11,19 @@
         </a>
       </div>
     </div>
+
+    <div class="lang-row">
+      <label class="lang-label" for="lang-select">{{ t('footer.language') }}</label>
+      <select id="lang-select" class="lang-select" v-model="currentLocale">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
     <div class="legal">
-      <p class="copyright">&copy;2026 宁波易什网络科技有限公司 版权所有</p>
+      <p class="copyright">{{ t('footer.copyright') }}</p>
       <p class="icp">
-        ICP备案/许可证号:
+        {{ t('footer.icp') }}
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">浙ICP备2022033471号-1</a>
       </p>
     </div>
@@ -22,6 +31,19 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n()
+
+const currentLocale = computed({
+  get: () => locale.value,
+  set: (val) => {
+    locale.value = val
+    localStorage.setItem('locale', val)
+  },
+})
+
 const repos = [
   { name: 'ViaProxy', url: 'https://github.com/EaseCation/ViaProxy' },
   { name: 'ViaBedrock', url: 'https://github.com/EaseCation/ViaBedrock' },
@@ -81,6 +103,47 @@ const repos = [
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.lang-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 5px 28px 5px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.lang-select:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.lang-select:focus {
+  outline: none;
+  border-color: var(--accent-green-light);
 }
 
 .legal {

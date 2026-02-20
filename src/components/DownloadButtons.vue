@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const base = import.meta.env.BASE_URL
 </script>
 
@@ -9,7 +11,7 @@ const base = import.meta.env.BASE_URL
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
         </svg>
-        下载整合包
+        {{ t('download.modpack') }}
       </a>
       <a href="#tutorial" class="btn btn-secondary">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -18,7 +20,7 @@ const base = import.meta.env.BASE_URL
           <line x1="16" y1="13" x2="8" y2="13"/>
           <line x1="16" y1="17" x2="8" y2="17"/>
         </svg>
-        安装教程
+        {{ t('download.tutorial') }}
       </a>
     </div>
   </section>

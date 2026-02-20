@@ -1,10 +1,10 @@
 <template>
   <section class="server-address">
-    <p class="label">服务器地址</p>
+    <p class="label">{{ t('server.label') }}</p>
     <div class="address-box">
       <span class="address-text">je.easecation.net:25565</span>
       <button class="copy-btn" @click="copyAddress">
-        {{ copied ? '已复制 ✓' : '复制' }}
+        {{ copied ? t('server.copied') : t('server.copy') }}
       </button>
     </div>
   </section>
@@ -12,7 +12,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const copied = ref(false)
 let timer = null
 

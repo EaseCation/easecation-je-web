@@ -4,8 +4,8 @@
     <div class="hero-inner" :style="{ transform: `translateY(${translateY}px)` }">
       <div class="hero-content" :style="{ opacity: contentOpacity, transform: `scale(${contentScale})` }">
         <img :src="logoUrl" alt="EaseCation" class="hero-logo" />
-        <p class="hero-subtitle">Java Edition · 技术预览测试</p>
-        <p class="hero-tag">基于 ViaProxy · Tech Preview · 部分玩法未适配</p>
+        <p class="hero-subtitle">{{ t('hero.subtitle') }}</p>
+        <p class="hero-tag">{{ t('hero.tag') }}</p>
       </div>
       <div class="hero-screenshot" :style="{ transform: `scale(${imageScale})`, transformOrigin: 'center center' }">
         <img ref="imgRef" :src="heroUrl" alt="EaseCation 游戏截图" class="screenshot-img" />
@@ -18,8 +18,11 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import logoUrl from '../assets/logo.png'
 import heroUrl from '../assets/hero.png'
+
+const { t } = useI18n()
 
 const bgRef = ref(null)
 const imgRef = ref(null)
