@@ -45,12 +45,17 @@ const currentLocale = computed({
 })
 
 const repos = [
-  { name: 'ViaProxy', url: 'https://github.com/EaseCation/ViaProxy' },
+  { name: 'ViaVersion', url: 'https://github.com/ViaVersion/ViaVersion' },
+  { name: 'ViaProxy', url: 'https://github.com/ViaVersion/ViaProxy' },
   { name: 'ViaBedrock', url: 'https://github.com/EaseCation/ViaBedrock' },
   { name: 'ViaBedrockUtility', url: 'https://github.com/EaseCation/ViaBedrockUtility' },
   { name: 'ViaProxyVBUCheck', url: 'https://github.com/EaseCation/ViaProxyVBUCheck' },
   { name: 'FabricRock', url: 'https://github.com/EaseCation/FabricRock' },
   { name: 'ModUIClient', url: 'https://github.com/EaseCation/ModUIClient' },
+  { name: 'ModUIClient', url: 'https://github.com/EaseCation/ModUIClient' },
+  { name: 'BECamera', url: 'https://github.com/EaseCation/BECamera' },
+  { name: 'BEParticle', url: 'https://github.com/EaseCation/BEParticle' },
+  { name: 'ECCameraClient', url: 'https://github.com/EaseCation/ECCameraClient' },
 ]
 </script>
 
