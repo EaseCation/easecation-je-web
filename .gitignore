@@ -4,5 +4,6 @@ dist
 *.local
 .idea/
 
-# 构建生成的 zip 包
+# 静态客户端下载包需要提交；其他 zip 保持忽略
 public/*.zip
+!public/EaseCation-Client-HMCL.zip

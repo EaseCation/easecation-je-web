@@ -2,12 +2,13 @@
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const base = import.meta.env.BASE_URL
+const clientPackageUrl = `${base}EaseCation-Client-HMCL.zip`
 </script>
 
 <template>
   <section class="download-section">
     <div class="buttons">
-      <a :href="`${base}easecation-modpack.zip`" download class="btn btn-primary">
+      <a :href="clientPackageUrl" download class="btn btn-primary">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
         </svg>

@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const base = import.meta.env.BASE_URL
+const clientPackageUrl = `${base}EaseCation-Client-HMCL.zip`
 </script>
 
 <template>
@@ -15,8 +16,8 @@ const base = import.meta.env.BASE_URL
     <div class="requirements">
       <h3>{{ t('tutorial.requirements.title') }}</h3>
       <ul>
-        <li><strong>Minecraft Java Edition</strong> 1.21.11</li>
-        <li><strong>Fabric Loader</strong> 0.18.4+</li>
+        <li><strong>Minecraft Java Edition</strong> 1.21.8</li>
+        <li><strong>NeoForge</strong> 21.8.53</li>
       </ul>
     </div>
 
@@ -26,7 +27,7 @@ const base = import.meta.env.BASE_URL
         <div class="step-content">
           <h4>{{ t('tutorial.step1.title') }}</h4>
           <p>{{ t('tutorial.step1.desc') }}</p>
-          <a :href="`${base}easecation-modpack.zip`" download class="step-btn">{{ t('tutorial.step1.btn') }}</a>
+          <a :href="clientPackageUrl" download class="step-btn">{{ t('tutorial.step1.btn') }}</a>
         </div>
       </div>
 
@@ -38,16 +39,6 @@ const base = import.meta.env.BASE_URL
           <div class="install-method">
             <h5>{{ t('tutorial.step2.thirdParty.title') }}</h5>
             <p v-html="t('tutorial.step2.thirdParty.desc')"></p>
-          </div>
-
-          <div class="install-method">
-            <h5>{{ t('tutorial.step2.official.title') }}</h5>
-            <ol>
-              <li v-html="t('tutorial.step2.official.step1')"></li>
-              <li v-html="t('tutorial.step2.official.step2')"></li>
-              <li v-html="t('tutorial.step2.official.step3')"></li>
-            </ol>
-            <div class="tip" v-html="t('tutorial.step2.official.tip')"></div>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ export default {
     copied: '已复制 ✓',
   },
   download: {
-    modpack: '下载整合包',
+    modpack: '下载客户端包',
     tutorial: '安装教程',
   },
   highlights: {
@@ -41,32 +41,25 @@ export default {
   },
   tutorial: {
     title: '安装教程',
-    modPurpose: '安装 Mod 是为了正确渲染服务器中的自定义方块、自定义实体、玩家皮肤、ModUI 等内容，并提供额外的性能优化。',
+    modPurpose: '客户端包会在启动时自动下载和更新所需 Mod，用于正确渲染服务器中的自定义方块、自定义实体、玩家皮肤、ModUI 等内容，并提供额外的性能优化。',
     requirements: {
       title: '环境要求',
     },
     step1: {
-      title: '下载整合包',
-      desc: '点击下方按钮下载整合包文件。',
-      btn: '下载整合包',
+      title: '下载客户端包',
+      desc: '点击下方按钮下载 HMCL 客户端包文件。',
+      btn: '下载客户端包',
     },
     step2: {
       title: '选择安装方式',
       thirdParty: {
-        title: '第三方启动器（HMCL、PCL2、BakaXL 等）',
-        desc: '在启动器中选择「导入整合包」，选择下载的 <code>.zip</code> 文件即可自动安装。服务器地址已预置，安装完成后可直接连接。',
-      },
-      official: {
-        title: '官方启动器（手动安装）',
-        step1: '前往 <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Fabric 官网</a> 下载安装器，选择 Minecraft <strong>1.21.11</strong> 版本安装 Fabric Loader',
-        step2: '解压整合包，将 <code>overrides/mods</code> 中的文件复制到 <code>.minecraft/mods/</code>',
-        step3: '将 <code>overrides/config</code> 中的文件复制到 <code>.minecraft/config/</code>',
-        tip: '<strong>提示：</strong>Windows 用户可通过 <code>%appdata%\\.minecraft</code> 快速访问；macOS 用户路径为 <code>~/Library/Application Support/minecraft</code>。',
+        title: 'HMCL 等支持实例包导入的启动器',
+        desc: '在启动器中选择「导入整合包/实例包」，选择下载的 <code>.zip</code> 文件即可安装。首次启动时会自动下载所需 Mod 与配置，请保持网络连接。',
       },
     },
     step3: {
       title: '启动游戏并连接',
-      desc: '在启动器中选择 <strong>Fabric 1.21.11</strong> 配置启动游戏。进入「多人游戏」，添加服务器地址：',
+      desc: '在启动器中选择导入的 <strong>EaseCation</strong> 实例启动游戏。进入「多人游戏」，添加服务器地址：',
     },
     notice: '游戏数据与中国版正式服数据不互通，仅做技术测试',
   },

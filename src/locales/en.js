@@ -9,7 +9,7 @@ export default {
     copied: 'Copied ✓',
   },
   download: {
-    modpack: 'Download Modpack',
+    modpack: 'Download Client Package',
     tutorial: 'Installation Guide',
   },
   highlights: {
@@ -41,32 +41,25 @@ export default {
   },
   tutorial: {
     title: 'Installation Guide',
-    modPurpose: 'Installing the Mod is required to correctly render custom blocks, custom entities, player skins, and ModUI content on the server, and provides additional performance optimizations.',
+    modPurpose: 'The client package downloads and updates the required Mods at launch so custom blocks, custom entities, player skins, and ModUI content render correctly, with additional performance optimizations.',
     requirements: {
       title: 'Requirements',
     },
     step1: {
-      title: 'Download Modpack',
-      desc: 'Click the button below to download the modpack file.',
-      btn: 'Download Modpack',
+      title: 'Download Client Package',
+      desc: 'Click the button below to download the HMCL client package.',
+      btn: 'Download Client Package',
     },
     step2: {
       title: 'Choose Installation Method',
       thirdParty: {
-        title: 'Third-party Launcher (HMCL, PCL2, BakaXL, etc.)',
-        desc: 'In the launcher, select "Import Modpack" and choose the downloaded <code>.zip</code> file for automatic installation. The server address is pre-configured, so you can connect directly after installation.',
-      },
-      official: {
-        title: 'Official Launcher (Manual Installation)',
-        step1: 'Go to the <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Fabric website</a> to download the installer, select Minecraft <strong>1.21.11</strong> and install Fabric Loader',
-        step2: 'Extract the modpack and copy files from <code>overrides/mods</code> to <code>.minecraft/mods/</code>',
-        step3: 'Copy files from <code>overrides/config</code> to <code>.minecraft/config/</code>',
-        tip: '<strong>Tip:</strong> Windows users can access the folder via <code>%appdata%\\.minecraft</code>; macOS users: <code>~/Library/Application Support/minecraft</code>.',
+        title: 'HMCL or Launchers That Support Instance Import',
+        desc: 'In the launcher, choose "Import Modpack/Instance" and select the downloaded <code>.zip</code> file. Required Mods and config are downloaded automatically on first launch, so keep the network connected.',
       },
     },
     step3: {
       title: 'Launch and Connect',
-      desc: 'In the launcher, select the <strong>Fabric 1.21.11</strong> profile to launch. Go to "Multiplayer" and add the server address:',
+      desc: 'In the launcher, start the imported <strong>EaseCation</strong> instance. Go to "Multiplayer" and add the server address:',
     },
     notice: 'Game data is not shared with the China Edition official server. For technical testing only.',
   },
