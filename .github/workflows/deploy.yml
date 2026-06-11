@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Aliyun OSS
 
 on:
   push:
@@ -7,38 +7,68 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: deploy-oss
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy-aliyun:
     runs-on: ubuntu-latest
+    env:
+      OSS_BUCKET: ${{ vars.OSS_BUCKET }}
+      OSS_REGION: oss-cn-hangzhou
+      ALIYUN_REGION: cn-hangzhou
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - run: npm run build -- --base=/easecation-je-web/
+      - name: Build site
+        run: npm run build
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+      - name: Install OSSUtil
+        run: |
+          curl -fL -o /tmp/ossutil64 https://gosspublic.alicdn.com/ossutil/1.7.8/ossutil64
+          chmod +x /tmp/ossutil64
+          sudo mv /tmp/ossutil64 /usr/local/bin/ossutil
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Configure OSSUtil
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        run: |
+          test -n "${OSS_BUCKET}"
+          test -n "${OSS_ACCESS_KEY_ID}"
+          test -n "${OSS_ACCESS_KEY_SECRET}"
+          ossutil config -e "${OSS_REGION}.aliyuncs.com" -i "${OSS_ACCESS_KEY_ID}" -k "${OSS_ACCESS_KEY_SECRET}"
+
+      - name: Upload to Aliyun OSS
+        run: |
+          ossutil cp -r ./dist "oss://${OSS_BUCKET}/" --force
+
+      - name: Install Aliyun CLI
+        run: |
+          curl -fL -o /tmp/aliyun.tgz https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
+          tar -xzf /tmp/aliyun.tgz -C /tmp
+          sudo mv /tmp/aliyun /usr/local/bin
+
+      - name: Configure Aliyun CLI
+        env:
+          ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+          ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        run: |
+          aliyun configure set --region "${ALIYUN_REGION}" --access-key-id "${ACCESS_KEY_ID}" --access-key-secret "${ACCESS_KEY_SECRET}"
+
+      - name: Refresh Aliyun CDN Cache
+        run: |
+          aliyun cdn RefreshObjectCaches --ObjectPath "https://je.easecation.net/" --ObjectType "Directory" --Force "true"
+          aliyun cdn RefreshObjectCaches --ObjectPath "http://je.easecation.net/" --ObjectType "Directory" --Force "true"
