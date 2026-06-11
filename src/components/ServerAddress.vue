@@ -2,7 +2,7 @@
   <section class="server-address">
     <p class="label">{{ t('server.label') }}</p>
     <div class="address-box">
-      <span class="address-text">je.easecation.net:25565</span>
+      <span class="address-text">jetest.easecation.net:25565</span>
       <button class="copy-btn" @click="copyAddress">
         {{ copied ? t('server.copied') : t('server.copy') }}
       </button>
@@ -19,7 +19,7 @@ const copied = ref(false)
 let timer = null
 
 function copyAddress() {
-  navigator.clipboard.writeText('je.easecation.net:25565').then(() => {
+  navigator.clipboard.writeText('jetest.easecation.net:25565').then(() => {
     copied.value = true
     clearTimeout(timer)
     timer = setTimeout(() => { copied.value = false }, 2000)

@@ -48,7 +48,7 @@ const clientPackageUrl = `${base}EaseCation-Client-HMCL.zip`
         <div class="step-content">
           <h4>{{ t('tutorial.step3.title') }}</h4>
           <p v-html="t('tutorial.step3.desc')"></p>
-          <code class="address-highlight">je.easecation.net:25565</code>
+          <code class="address-highlight">jetest.easecation.net:25565</code>
         </div>
       </div>
     </div>

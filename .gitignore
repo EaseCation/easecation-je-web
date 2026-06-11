@@ -3,6 +3,7 @@ dist
 .DS_Store
 *.local
 .idea/
+.claude/
 
 # 静态客户端下载包需要提交；其他 zip 保持忽略
 public/*.zip
